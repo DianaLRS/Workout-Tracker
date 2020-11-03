@@ -25,7 +25,7 @@ const workoutSchema = new Schema({
 
     duration: {
         type: Number,
-        required: true
+        required: "Enter duration in minutes"
 
     },
 
@@ -46,6 +46,10 @@ const workoutSchema = new Schema({
         type: Number,
         required: true
 
+    },
+    distance: {
+        type: Number,
+        required: "Enter distance in miles. "
     }
 
 })
