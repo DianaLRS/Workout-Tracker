@@ -27,7 +27,7 @@ router.post("/api/workouts/range", function({ body }, res) {
 
 
 //UPDATing our routes
-router.put("/api/workouts/", ({ body, params }, res) => {
+router.put("/api/workouts/:id", ({ body, params }, res) => {
     Workout.findByIdAndUpdate(
             params.id, { $push: { exercises: body } }, { new: true, runValidators: true }
         )
@@ -42,7 +42,7 @@ router.put("/api/workouts/", ({ body, params }, res) => {
 router.get("/api/workouts", function(req, res) {
     Workout.find()
         .then(dbWorkout => {
-            res.join(dbWorkout)
+            res.json(dbWorkout)
         })
         .catch(err => {
             res.status(400).json(err);
@@ -53,7 +53,7 @@ router.get("/api/workouts", function(req, res) {
 router.get("/api/workouts/range", function(req, res) {
     Workout.find()
         .then(dbWorkout => {
-            res.join(dbWorkout)
+            res.json(dbWorkout)
         })
         .catch(err => {
             res.status(400).json(err);
