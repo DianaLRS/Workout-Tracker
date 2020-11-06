@@ -1,7 +1,30 @@
 const router = require("express").Router();
-const Workout = require("../models/Workout.js");
+const Workout = require("../models/Workout");
+const index = require("../models/index")
 
+//GETting our routes
 
+router.get("/api/workouts", function(req, res) {
+    Workout.find({})
+        .then(dbWorkout => {
+            res.json(dbWorkout)
+        })
+        .catch(err => {
+            res.status(400).json(err);
+        });
+
+});
+
+router.get("/api/workouts/range", function(req, res) {
+    Workout.find({})
+        .then(dbWorkout => {
+            res.json(dbWorkout)
+        })
+        .catch(err => {
+            res.status(400).json(err);
+        });
+
+});
 
 
 // //POSTing our routes
@@ -37,38 +60,5 @@ router.put("/api/workouts/:id", ({ body, params }, res) => {
             res.json(err)
         })
 });
-//GETting our routes
-
-router.get("/api/workouts", function(req, res) {
-    Workout.find()
-        .then(dbWorkout => {
-            res.json(dbWorkout)
-        })
-        .catch(err => {
-            res.status(400).json(err);
-        });
-
-});
-
-router.get("/api/workouts/range", function(req, res) {
-    Workout.find()
-        .then(dbWorkout => {
-            res.json(dbWorkout)
-        })
-        .catch(err => {
-            res.status(400).json(err);
-        });
-
-});
-
-
-
-
-
-
-
-
-
-
 
 module.exports = router;
